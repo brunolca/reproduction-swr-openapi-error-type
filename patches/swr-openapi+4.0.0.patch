@@ -1,0 +1,20 @@
+diff --git a/node_modules/swr-openapi/dist/index.d.ts b/node_modules/swr-openapi/dist/index.d.ts
+index 7ddd9e5..d705d15 100644
+--- a/node_modules/swr-openapi/dist/index.d.ts
++++ b/node_modules/swr-openapi/dist/index.d.ts
+@@ -7,12 +7,13 @@ import type { PartialDeep } from "type-fest";
+ export type SwrOpenApiConfiguration = {
+     matchKeyComparator?: (a: object, b: object) => boolean;
+ };
++
+ /**
+  * Apply an optional configuration to the library at runtime
+  */
+ export declare function applySwrOpenApiConfiguration(config: SwrOpenApiConfiguration): void;
+ export declare function createHooks<Paths extends {}>(api: ReturnType<typeof createClient<Paths>>, keyPrefix: string): {
+-    use: <Path extends PathsWithMethod<Paths, "get">, Req extends FilterKeys<Paths[Path], "get">, Options extends FetchOptions<Req>, Data extends ParseAsResponse<FilterKeys<SuccessResponse<ResponseObjectMap<Req>>, MediaType>, Options>, Error extends FilterKeys<ErrorResponse<ResponseObjectMap<Req>>, MediaType>, Config extends SWRConfiguration<Data, Error>>(path: Path, options: Options | null, swrConfig?: Config) => import("swr").SWRResponse<Data, Error, Config>;
+-    useInfinite: <Path extends PathsWithMethod<Paths, "get">, Req extends FilterKeys<Paths[Path], "get">, Options extends FetchOptions<Req>, Data extends ParseAsResponse<FilterKeys<SuccessResponse<ResponseObjectMap<Req>>, MediaType>, Options>, Error extends FilterKeys<ErrorResponse<ResponseObjectMap<Req>>, MediaType>, Config extends SWRConfiguration<Data, Error>>(path: Path, getOptionsFn: SWRInfiniteKeyLoader<Data, Options | null>, swrConfig?: Config) => import("swr/dist/infinite").SWRInfiniteResponse<Data, Error>;
++    use: <Path extends PathsWithMethod<Paths, "get">, Req extends FilterKeys<Paths[Path], "get">, Options extends FetchOptions<Req>, Data extends ParseAsResponse<FilterKeys<SuccessResponse<ResponseObjectMap<Req>>, MediaType>, Options>, Error extends ErrorResponse<ResponseObjectMap<Req>>, Config extends SWRConfiguration<Data, Error>>(path: Path, options: Options | null, swrConfig?: Config) => import("swr").SWRResponse<Data, Error, Config>;
++    useInfinite: <Path extends PathsWithMethod<Paths, "get">, Req extends FilterKeys<Paths[Path], "get">, Options extends FetchOptions<Req>, Data extends ParseAsResponse<FilterKeys<SuccessResponse<ResponseObjectMap<Req>>, MediaType>, Options>, Error extends ErrorResponse<ResponseObjectMap<Req>>, Config extends SWRConfiguration<Data, Error>>(path: Path, getOptionsFn: SWRInfiniteKeyLoader<Data, Options | null>, swrConfig?: Config) => import("swr/dist/infinite").SWRInfiniteResponse<Data, Error>;
+     readonly matchKey: <Path extends PathsWithMethod<Paths, "get">, Req extends FilterKeys<Paths[Path], "get">, Options extends FetchOptions<Req>>(path: Path, pathOptions?: PartialDeep<Options>) => (key: unknown) => boolean;
+ };
